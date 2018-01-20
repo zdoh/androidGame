@@ -9,10 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rogue.game.Assets;
 
-/**
- * Created by FlameXander on 20.11.2017.
- */
-
 public class LoadingScreen implements Screen {
     private SpriteBatch batch;
     private Texture texture;

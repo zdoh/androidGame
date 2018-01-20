@@ -4,10 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rogue.game.screens.GameScreen;
 
-/**
- * Created by FlameXander on 12.01.2018.
- */
-
 public class TrashEmitter {
     private GameScreen gameScreen;
     private Trash[] trashes;

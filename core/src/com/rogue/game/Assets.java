@@ -12,10 +12,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.rogue.game.screens.ScreenManager;
 
-/**
- * Created by FlameXander on 09.01.2018.
- */
-
 public class Assets {
     private static final Assets ourInstance = new Assets();
 

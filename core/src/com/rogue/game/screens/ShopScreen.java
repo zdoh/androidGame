@@ -19,10 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rogue.game.Assets;
 
-/**
- * Created by FlameXander on 14.01.2018.
- */
-
 public class ShopScreen implements Screen {
     private Texture backgroundTexture;
     private TextureRegion[] regions;

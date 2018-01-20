@@ -2,10 +2,6 @@ package com.rogue.game;
 
 import com.badlogic.gdx.math.Vector2;
 
-/**
- * Created by FlameXander on 20.09.2017.
- */
-
 public class Bullet implements Poolable {
     private boolean isPlayersBullet;
     private Vector2 position;

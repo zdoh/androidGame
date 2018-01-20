@@ -13,10 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.rogue.game.Assets;
 
-/**
- * Created by FlameXander on 09.01.2018.
- */
-
 public class MenuScreen implements Screen {
     private Texture backgroundTexture;
     private BitmapFont font48;

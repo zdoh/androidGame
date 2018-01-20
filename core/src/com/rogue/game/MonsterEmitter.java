@@ -8,10 +8,6 @@ import com.rogue.game.screens.GameScreen;
 
 import java.io.Serializable;
 
-/**
- * Created by FlameXander on 12.01.2018.
- */
-
 public class MonsterEmitter implements Serializable {
     private transient GameScreen gameScreen;
     private Monster[] monsters;

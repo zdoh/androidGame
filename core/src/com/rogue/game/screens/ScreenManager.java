@@ -7,9 +7,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rogue.game.Assets;
 import com.rogue.game.RpgGame;
 
-/**
- * Created by FlameXander on 09.01.2018.
- */
 
 public class ScreenManager {
     public enum ScreenType {

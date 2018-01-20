@@ -3,10 +3,6 @@ package com.rogue.game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-/**
- * Created by FlameXander on 20.09.2017.
- */
-
 public class BulletEmitter extends ObjectPool<Bullet> {
     private TextureRegion bulletTexture;
 
