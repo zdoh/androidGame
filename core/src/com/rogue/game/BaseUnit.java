@@ -11,6 +11,7 @@ import java.io.Serializable;
 public abstract class BaseUnit implements Serializable {
     public enum Type {
         /*Knight("knight"),*/ Player("p1Walk", "p1Jump"), Bear("bear");
+        //
 
         private String texture;
         private String jumpTexture;
