@@ -157,12 +157,12 @@ public class Map implements Serializable {
         return isCellEmpty(cellX, cellY);
     }
 
-    public boolean checkSpaceIsEmpty(BaseUnit unit, float x, float y) {
+    /*public boolean checkSpaceIsEmpty(BaseUnit unit, float x, float y) {
         if (x < 0 || x > endOfWorldX) return false;
         int cellX = (int) (x / CELL_SIZE_PX);
         int cellY = (int) (y / CELL_SIZE_PX);
         return isCellEmpty(unit, cellX, cellY);
-    }
+    }*/
 
     public void blockCell(BaseUnit unit) {
         if (unit.getCenterX() < 0 || unit.getCenterX() > endOfWorldX) return;

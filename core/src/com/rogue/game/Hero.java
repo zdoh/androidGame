@@ -24,12 +24,12 @@ public class Hero extends BaseUnit implements Serializable {
     }
 
     public Hero(GameScreen gameScreen, Map map, float x, float y) {
-        super(gameScreen, map, 100, 360.0f, 0.4f, x, y, 100, 100);
+        super(gameScreen, map, 100, 360.0f, 0.4f, x, y, 72, 97);
         this.coins = 0;
         this.lifes = 5;
         this.score = 0;
         this.guiStringHelper = new StringBuilder(150);
-        this.type = Type.Knight;
+        this.type = Type.Player;
         this.afterLoad(gameScreen);
     }
 

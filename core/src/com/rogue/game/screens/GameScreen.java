@@ -96,7 +96,7 @@ public class GameScreen implements Screen {
         map = new Map(64);
         map.generateMap();
         hero = new Hero(this, map, 300, 300);
-        monsterEmitter = new MonsterEmitter(this, 400, 0.1f);
+        monsterEmitter = new MonsterEmitter(this, 20, 0.1f);
         for (int i = 0; i < 15; i++) {
             monsterEmitter.createMonster(MathUtils.random(0, map.getEndOfWorldX()), 500);
         }

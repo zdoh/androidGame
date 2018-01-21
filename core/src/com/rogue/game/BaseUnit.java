@@ -10,22 +10,34 @@ import java.io.Serializable;
 
 public abstract class BaseUnit implements Serializable {
     public enum Type {
-        Knight("knight"), Bear("bear");
+        /*Knight("knight"),*/ Player("p1Walk", "p1Jump"), Bear("bear");
 
         private String texture;
+        private String jumpTexture;
 
         public String getTexture() {
             return texture;
         }
 
+        public String getJumpTexture() {
+            return jumpTexture;
+        }
+
         Type(String texture) {
             this.texture = texture;
+            this.jumpTexture = null;
+        }
+
+        Type(String texture, String jumpTexture) {
+            this.texture = texture;
+            this.jumpTexture = jumpTexture;
         }
     }
 
     protected transient GameScreen gameScreen;
     protected Map map;
     protected transient TextureRegion[] regions;
+    protected transient TextureRegion jumpRegion;
     protected Vector2 velocity;
     protected float animationTime;
     protected boolean right;
@@ -39,6 +51,7 @@ public abstract class BaseUnit implements Serializable {
     protected float speed;
     protected float reddish;
     protected Type type;
+    protected transient TextureRegion moveRegion;
 
     public float getCenterX() {
         return hitArea.x + hitArea.width / 2;
@@ -66,7 +79,7 @@ public abstract class BaseUnit implements Serializable {
         this.maxHp = maxHp;
         this.speed = speed;
         this.hp = this.maxHp;
-        this.hitArea = new Rectangle(x, y, width / 3, height / 3 * 2);
+        this.hitArea = new Rectangle(x, y, width / 2, (int) (height / 1.2));
         this.timeBetweenFire = timeBetweenFire;
         this.reddish = 0.0f;
     }
@@ -74,6 +87,13 @@ public abstract class BaseUnit implements Serializable {
     public void afterLoad(GameScreen gameScreen) {
         TextureRegion tr = Assets.getInstance().getAtlas().findRegion(type.getTexture());
         this.regions = tr.split(width, height)[0];
+
+        if(type.getJumpTexture() != null) {
+            this.jumpRegion = Assets.getInstance().getAtlas().findRegion(type.getJumpTexture());
+        } else {
+            this.jumpRegion = this.regions[0];
+        }
+
         this.gameScreen = gameScreen;
     }
 
@@ -162,7 +182,7 @@ public abstract class BaseUnit implements Serializable {
         float dx = hitArea.width / parts;
         float dy = hitArea.height / parts;
         for (int i = 0; i <= parts; i++) {
-            if (!map.checkSpaceIsEmpty(this,hitArea.x + i * dx, hitArea.y) || !map.checkSpaceIsEmpty(this,hitArea.x + i * dx, hitArea.y + hitArea.height) || !map.checkSpaceIsEmpty(this,hitArea.x, hitArea.y + i * dy) || !map.checkSpaceIsEmpty(this,hitArea.x + hitArea.width, hitArea.y + i * dy)) {
+            if (!map.checkSpaceIsEmpty(hitArea.x + i * dx, hitArea.y) || !map.checkSpaceIsEmpty(hitArea.x + i * dx, hitArea.y + hitArea.height) || !map.checkSpaceIsEmpty(hitArea.x, hitArea.y + i * dy) || !map.checkSpaceIsEmpty(hitArea.x + hitArea.width, hitArea.y + i * dy)) {
                 return true;
             }
         }
@@ -171,14 +191,19 @@ public abstract class BaseUnit implements Serializable {
 
     public void render(SpriteBatch batch) {
         int frameIndex = getCurrentFrame();
-        if (!right && !regions[frameIndex].isFlipX()) {
-            regions[frameIndex].flip(true, false);
+
+        moveRegion = velocity.y != 0 ? jumpRegion : regions[frameIndex];
+
+
+        if (!right && !moveRegion.isFlipX()) {
+            moveRegion.flip(true, false);
         }
-        if (right && regions[frameIndex].isFlipX()) {
-            regions[frameIndex].flip(true, false);
+        if (right &&  moveRegion.isFlipX()) {
+            moveRegion.flip(true, false);
         }
         batch.setColor(1.0f, 1.0f - reddish, 1.0f - reddish, 1.0f);
-        batch.draw(regions[frameIndex], hitArea.x - (width - hitArea.width) / 2, hitArea.y - (height - hitArea.height) / 2);
+
+        batch.draw(moveRegion, hitArea.x - (width - hitArea.width) / 2, hitArea.y - (height - hitArea.height) / 2);
         batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
